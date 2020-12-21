@@ -1,0 +1,24 @@
+{
+  "name": "technocratic-discord",
+  "version": "1.0.0",
+  "description": "Discord bot for Debatawka Technocratic Party",
+  "main": "index.js",
+  "repository": "https://github.com/KadEyy/technocratic-discord.git",
+  "author": "Jakub Mizera <k.cstmz@gmail.com>",
+  "scripts": {
+    "compileDev": "tsc --watch",
+    "compile": "tsc",
+    "dev": "nodemon build/index.js",
+    "start": "node build/index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@typeit/discord": "^4.0.8",
+    "discord.js": "^12.5.1",
+    "nodemon": "^2.0.6",
+    "tslib": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.14"
+  }
+}
