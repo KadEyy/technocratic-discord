@@ -23,14 +23,14 @@ export abstract class Mute{
         else{
             const s = parseInt(command.args.s);
             if(Number.isNaN(s)){
-                command.reply('nie podałeś czasu wyciszenia!')
+                command.reply('nie podałeś/aś czasu wyciszenia!')
             }
             else{
                 const announceChannel = command.guild.channels.cache.get(announceChannelID);
                 const since = new Date().getTime();
                 const time = convertSecondsToTime(s);
                 command.mentions.users.forEach(user => {
-                    if(announceChannel.isText()) announceChannel.send(`**${user} zostajesz wyciszony na **\`${time}\`** przez ${command.author} - możesz spytać go o powód w prywatenej wiadomości.**`)
+                    if(announceChannel.isText()) announceChannel.send(`**${user} zostajesz wyciszony/a na **\`${time}\`** przez ${command.author} - możesz spytać go/jej o powód w prywatenej wiadomości.**`)
                     muted[user.id] = {since: since, for: s * 1000}
                 })
             }

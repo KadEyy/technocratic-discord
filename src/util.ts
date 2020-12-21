@@ -5,3 +5,7 @@ export const convertSecondsToTime = (s: number) => {
     const seconds = s % 60;
     return `${hours}:${minutes}:${seconds}`
 }
+
+export const randomFromRange = (min: number, max: number) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}

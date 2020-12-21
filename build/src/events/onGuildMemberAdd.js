@@ -9,7 +9,7 @@ class onGuildMemberAdd {
         member.roles.add(member.guild.roles.cache.get(data_1.guestRoleID));
         const welcomeChannel = member.guild.channels.cache.get(data_1.welcomeChannelID);
         if (welcomeChannel.isText())
-            welcomeChannel.send(`**Witaj na  serwerze discord Partii Technokratycznej ${member}!**`);
+            welcomeChannel.send(`**Witaj na serwerze discord Partii Technokratycznej ${member}!**`);
     }
 }
 tslib_1.__decorate([

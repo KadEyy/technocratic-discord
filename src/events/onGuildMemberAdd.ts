@@ -6,6 +6,6 @@ export abstract class onGuildMemberAdd{
     memberJoin([member]: ArgsOf<'guildMemberAdd'>){
         member.roles.add(member.guild.roles.cache.get(guestRoleID));
         const welcomeChannel = member.guild.channels.cache.get(welcomeChannelID);
-        if(welcomeChannel.isText()) welcomeChannel.send(`**Witaj na  serwerze discord Partii Technokratycznej ${member}!**`);
+        if(welcomeChannel.isText()) welcomeChannel.send(`**Witaj na serwerze discord Partii Technokratycznej ${member}!**`);
     }
 }

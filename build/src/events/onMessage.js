@@ -11,7 +11,7 @@ class onGuildMemberAdd {
         const mutedUser = mute_1.muted[message.author.id] ? mute_1.muted[message.author.id] : false;
         if (mutedUser && mutedUser.since + mutedUser.for > time && !message.member.hasPermission('ADMINISTRATOR')) {
             message.delete();
-            message.author.send(`**Zostałeś wyciszony na serwerze Partii Technokratów, pozostały czas wyciszenia to** \`${util_1.convertSecondsToTime(Math.floor((mutedUser.since + mutedUser.for - time) / 1000))}\`**.**`);
+            message.author.send(`**Zostałeś/aś wyciszony/a na serwerze Partii Technokratów, pozostały czas wyciszenia to** \`${util_1.convertSecondsToTime(Math.floor((mutedUser.since + mutedUser.for - time) / 1000))}\`**.**`);
         }
     }
 }

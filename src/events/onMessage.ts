@@ -9,7 +9,7 @@ export abstract class onGuildMemberAdd{
         const mutedUser = muted[message.author.id] ? muted[message.author.id] : false;
         if(mutedUser && mutedUser.since + mutedUser.for > time && !message.member.hasPermission('ADMINISTRATOR')){
             message.delete();
-            message.author.send(`**Zostałeś wyciszony na serwerze Partii Technokratów, pozostały czas wyciszenia to** \`${convertSecondsToTime(Math.floor((mutedUser.since + mutedUser.for - time)/1000))}\`**.**`)
+            message.author.send(`**Zostałeś/aś wyciszony/a na serwerze Partii Technokratów, pozostały czas wyciszenia to** \`${convertSecondsToTime(Math.floor((mutedUser.since + mutedUser.for - time)/1000))}\`**.**`)
         }
     }
 }
