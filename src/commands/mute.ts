@@ -1,12 +1,48 @@
 import {Command, CommandMessage, Discord} from '@typeit/discord';
-import { GuildMember, User } from 'discord.js';
+import {convertSecondsToTime} from '../util'
+import {announceChannelID} from '../data'
+
+interface MutedUserData{
+    since: number;
+    for: number;
+}
+
+interface MutedMap{
+    [key: string]: MutedUserData | null
+}
+
+export const muted: MutedMap = {};
 
 @Discord("!")
 export abstract class Mute{
-    @Command('wycisz :ms')
+    @Command('wycisz :s')
     async mute(command: CommandMessage){
-        const mutedUsers: User[] = [];
-        command.mentions.users.forEach(user => mutedUsers.push(user));
-        const ms = parseInt(command.args.ms);
+        if(!command.member.hasPermission('ADMINISTRATOR')){
+            command.reply('nie masz uprawnień by używać tej komendy!')
+        }
+        else{
+            const s = parseInt(command.args.s);
+            if(Number.isNaN(s)){
+                command.reply('nie podałeś czasu wyciszenia!')
+            }
+            else{
+                const announceChannel = command.guild.channels.cache.get(announceChannelID);
+                const since = new Date().getTime();
+                const time = convertSecondsToTime(s);
+                command.mentions.users.forEach(user => {
+                    if(announceChannel.isText()) announceChannel.send(`**${user} zostajesz wyciszony na **\`${time}\`** przez ${command.author} - możesz spytać go o powód w prywatenej wiadomości.**`)
+                    muted[user.id] = {since: since, for: s * 1000}
+                })
+            }
+        }
+    }
+    @Command('anulujWyciszenie')
+    async unmute(command: CommandMessage){
+        if(!command.member.hasPermission('ADMINISTRATOR')){
+            command.reply('nie masz uprawnień by używać tej komendy!')
+        }
+        else{
+            command.mentions.users.forEach(user => muted[user.id] = null);
+        }
     }
 }

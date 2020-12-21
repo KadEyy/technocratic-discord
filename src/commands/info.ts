@@ -9,7 +9,7 @@ export abstract class Info{
         .setColor('#02468f')
         .setTitle('Informacje o bocie.')
         .setThumbnail('https://imgur.com/5gSAi6z.png')
-        .setAuthor(command.guild.members.cache.find(member => member.nickname === '/KadEyy/')[0])
+        .setAuthor(command.guild.members.cache.find(member => member.id === '393104366451818506').user.tag)
         .addFields(
             {name: 'Wersja:', value: '1.0.0'},
             {name: 'Github:', value: 'https://github.com/KadEyy/technocratic-discord'}
