@@ -6,7 +6,7 @@ const discord_1 = require("@typeit/discord");
 const util_1 = require("../util");
 let FunCommands = class FunCommands {
     async coinflip(command) {
-        command.reply(Math.floor(Math.random() * 2) === 0 ? 'Orzeł' : 'Reszka');
+        command.reply(Math.floor(Math.random() * 2) === 0 ? 'orzeł.' : 'reszka.');
     }
     async randomize(command) {
         const min = Math.ceil(parseInt(command.args.od));

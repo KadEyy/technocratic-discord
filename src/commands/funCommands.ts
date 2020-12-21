@@ -5,7 +5,7 @@ import {randomFromRange} from '../util';
 export abstract class FunCommands{
     @Command('rzutMoneta')
     async coinflip(command: CommandMessage){
-        command.reply(Math.floor(Math.random() * 2) === 0 ? 'Orzeł' : 'Reszka');
+        command.reply(Math.floor(Math.random() * 2) === 0 ? 'orzeł.' : 'reszka.');
     }
     @Command('losujLiczbe :od :do')
     async randomize(command: CommandMessage){
